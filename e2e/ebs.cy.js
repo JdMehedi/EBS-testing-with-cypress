@@ -1,0 +1,40 @@
+describe('template spec', () => {
+    it('passes', () => {
+        cy.visit('https://uat-crm.oss.net.bd/')
+        cy.get('a[href="#ebsPortal"]').click()
+        cy.get('a').contains('Log In').click()
+        cy.get('input[id="username"]').type('sqatest1@ba-systems.com')
+        cy.get('input[id="password"]').type('Sqa@!@#098_baT)')
+        cy.get('input[id="kc-login"]').click()
+        //assertion
+        cy.url().should('include','users/profileinfo')
+        cy.get('a[href="https://uat-crm.oss.net.bd/issue/lists"]').click()
+        cy.get('button[class="btn btn-default dropbtn"]').click()
+        cy.get('label>div>input[value="Bug"]').click()
+        cy.wait(1000)
+        cy.get('label>div>input[value="CR"]').click()
+        cy.get('span[id="select2-project_id-container"]').click()
+        cy.get('input[class="select2-search__field"]').type('Business Automation LTD{enter}')
+        cy.get('select[id="milestone_id"]').select('394')
+        cy.get('select[id="task_id"]').select('419')
+        cy.get('input[id="issue_title"]').type('Adaptor does not work')
+        cy.get('div[contenteditable="true"]').type('Its very urgent to fix that issue')
+        cy.get('select[id="severity"]').select('Block')
+        cy.get('label>div>input[value="High"]').click()
+        cy.get('select[id="reproducibility"]').select('Block')
+        cy.get('input[name="reproduction_steps"]').type('Please do necessary steps')
+        cy.get('span[id="select2-assigned_to_team-container"]').click()
+        cy.get('input[class="select2-search__field"]').type('industry{enter}')
+        cy.get('span[class="select2-selection select2-selection--single"]').eq(2).click()
+        cy.get('input[class="select2-search__field"]').type('assaduzzaman{enter}')
+        cy.get('input[value="2"]').click()
+        cy.get('input[value="1"]').eq(1).click()
+        cy.get('label[class="col-md-3 col-xs-3 specialRadiodiv"]').contains('URL').click()
+        cy.get('[id="URL"]').type('https://drive.google.com/file/d/1B8Gq8N-l6Q9iL0ZHWjKfXm_mmBMkxt-w/view?usp=sharing')
+        cy.get('[id="relationships"]').select("None")
+        cy.get('button>b').click()
+        
+
+
+    });
+})
